@@ -4,24 +4,24 @@
 
 function decideWhatToSay(number) {
 
-    if (number % 15 == 0) {
+    if (number % 15 === 0) {
         return 'FizzBuzz';
     }
-    if (number % 3 == 0) {
+    if (number % 3 === 0) {
         return 'Fizz';
     } else
-    if (number % 5 == 0) {
+    if (number % 5 === 0) {
         return 'Buzz';
     }
     return number.toString();
-};
+}
 
 function fizzBuzzList(maxLen) {
     var theList = '';
 
     maxLen = typeof maxLen !== 'undefined' ? maxLen : 30;
 
-    for (item = 1; item <= maxLen; item++) {
+    for (var item = 1; item <= maxLen; item++) {
         theList += decideWhatToSay(item) + "\n";
     }
 

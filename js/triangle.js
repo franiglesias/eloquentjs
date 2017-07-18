@@ -11,7 +11,7 @@ function createATriangle(height, theCharacter) {
     theCharacter = typeof theCharacter !== 'undefined' ? theCharacter : '$';
 
     var theTriangle = '';
-    for (row = 0; row < height; row++) {
+    for (var row = 0; row < height; row++) {
         theTriangle += repeatCharacter(theCharacter, row + 1) + "\n";
     }
     return theTriangle;
