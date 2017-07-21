@@ -2,15 +2,19 @@
  * Created by frankie on 17/7/17.
  */
 
+function isDivisible(number, by) {
+    return (number % by === 0);
+}
+
 function decideWhatToSay(number) {
 
-    if (number % 15 === 0) {
+    if (isDivisible(number, 15)) {
         return 'FizzBuzz';
     }
-    if (number % 3 === 0) {
+    if (isDivisible(number, 3)) {
         return 'Fizz';
-    } else
-    if (number % 5 === 0) {
+    }
+    if (isDivisible(number, 5)) {
         return 'Buzz';
     }
     return number.toString();
