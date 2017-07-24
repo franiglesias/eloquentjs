@@ -15,22 +15,18 @@ function findSolution(target) {
         return number * 3;
     }
 
-    function updateHistoryAddFive(history) {
-
-        return "(" + history + " + 5)";
+    function updateHistory(history, transformation) {
+        return "(" + history + " " + transformation + ")";
     }
 
-    function updateHistoryMultiplyThree(history) {
 
-        return "(" + history + " * 3)";
-    }
 
     function find(start, history) {
         if (targetWasReached(start)) {
             return history;
         } else if (targetWasExceded(start)) {
             return null;
-        } else return find(addFive(start), updateHistoryAddFive(history)) || find(multiplyThree(start), updateHistoryMultiplyThree(history));
+        } else return find(addFive(start), updateHistory(history, '+ 5')) || find(multiplyThree(start), updateHistory(history, '* 3'));
     }
 
     return find(1, "1");
