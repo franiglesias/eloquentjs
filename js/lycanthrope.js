@@ -1,6 +1,15 @@
 var JOURNAL = require('./journal-data.js');
 
-function it(message, test) {console.log((test ? '[√]' :'[x]') + ' ' + message);}
+function arrayEquals(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+    return arr2.every(function(element, index) {
+        return element = arr2[index];
+    });
+}
+
+function it(message, test) {console.log((test ? '\x1b[32m[√]' :'\x1b[31m[x]') + ' ' + message);}
 
 Number.prototype.round = function(places) {
     return +(Math.round(this + "e+" + places)  + "e-" + places);
@@ -32,11 +41,31 @@ function tableFor(event, journal) {
     return table;
 }
 
-it('Computes correlation', phi([76, 9, 4, 1]).round(4) === 0.0686);
+
+function gatherCorrelations(journal) {
+    var map = {};
+    journal.forEach(function(entry) {
+        entry.events.forEach(function (event) {
+            if(!(event in map)) {
+                map[event] = phi(tableFor(event, journal));
+            }
+        });
+    });
+    return map;
+}
+
+function filterCorrelations(phis, threshold) {
+    threshold = typeof threshold !== 'undefined' ? threshold : 0;
+    for(event in phis) {
+        var phi = phis[event];
+        if (phi > threshold || phi < -threshold) {
+            console.log (event + ': ' + phi);
+        }
+    }
+}
+
+it('Computes phi correlation', phi([76, 9, 4, 1]).round(4) === 0.0686);
 it('Can know if entry has an event', hasEvent('pizza', {events: ['touched tree', 'pizza']}));
+it('Generates table for an event', arrayEquals(tableFor('pizza', JOURNAL),  [ 76, 9, 4, 1 ]));
 
-var table = tableFor('pizza', JOURNAL);
-
-console.log(table);
-
-it('Generates table for an event', table === [ 76, 9, 4, 1 ]);
+console.log(filterCorrelations(gatherCorrelations(JOURNAL), .3))
