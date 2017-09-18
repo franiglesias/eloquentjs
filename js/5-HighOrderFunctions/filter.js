@@ -1,9 +1,14 @@
 var ANCESTRY_FILE = require('./data/ancestry.js');
+var ancestry = JSON.parse(ANCESTRY_FILE);
 
 var it = require('../tools/it.js');
 var deepEqual = require('../tools/deepequal.js');
 
-var ancestry = JSON.parse(ANCESTRY_FILE);
+// test function
+
+function test(person) {
+    return person.born > 1900 && person.born < 1925;
+}
 
 // How filtering works
 
@@ -17,10 +22,6 @@ function filter(array, test) {
     }
 
     return passed;
-}
-
-function test(person) {
-    return person.born > 1900 && person.born < 1925;
 }
 
 var external = filter(ancestry, test);
