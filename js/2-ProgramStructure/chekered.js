@@ -15,3 +15,5 @@ function checkered(size) {
     }
     return result;
 }
+
+console.log(checkered(12));

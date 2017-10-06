@@ -16,3 +16,5 @@ function createATriangle(height, theCharacter) {
     }
     return theTriangle;
 }
+
+console.log(createATriangle(10, '%'));

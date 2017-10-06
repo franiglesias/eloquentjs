@@ -1,3 +1,6 @@
+var it = require('../tools/it.js');
+
+
 function minimum(x, y) {
     if (x < y) {
         return x;
@@ -6,18 +9,6 @@ function minimum(x, y) {
 }
 
 
-if (minimum(3, 5) == 3) {
-    console.log ('OK');
-} else {
-    console.log('Error');
-}
-if (minimum(7, 3) == 3) {
-    console.log ('OK');
-} else {
-    console.log('Error');
-}
-if (minimum(5, 5) == 5) {
-    console.log('OK');
-} else {
-    console.log('Error');
-}
+it('3 is the minimun in 3,5', 3 == minimum(3,5));
+it('3 is the minimun in 7,3', 3 == minimum(7,3));
+it('Equal numbers', 5 == minimum(5,5));

@@ -1,3 +1,6 @@
+var it = require('../tools/it.js');
+
+
 function countBs(text) {
     return countsChar(text, 'B');
 }
@@ -12,15 +15,6 @@ function countsChar(text, char) {
     return counter;
 }
 
-function it(message, test) {
-    var result;
-    if (test) {
-        result = '[√]';
-    } else {
-        result = '[x]';
-    }
-    console.log(result + ' ' + message);
-}
 
 it('Counts 2 B in Abracadabra', countBs('ABRACADABRA') == 2);
 it('Counts 5 A in Abracadabra', countsChar('ABRACADABRA', 'A') == 5);

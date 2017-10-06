@@ -31,3 +31,5 @@ function fizzBuzzList(maxLen) {
 
     return theList;
 }
+
+console.log(fizzBuzzList(30));

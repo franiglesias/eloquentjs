@@ -1,4 +1,4 @@
-function it(message, test) {console.log((test ? '\x1b[32m[√]' :'\x1b[31m[x]') + ' ' + message);}
+var it = require('../tools/it.js');
 
 function arrayEquals(arr1, arr2) {
     if (arr1.length !== arr2.length) {
